@@ -1,10 +1,10 @@
-title: example.com
-description: "Satellite - jekyll blog theme"
-logo_img: "/assets/img/favicon.webp"
-profile_img: "/assets/img/profile.webp"
+title: selfcode.kr
+description: "지식을 오픈소스처럼 나누는 공간, Selfcode입니다."
+logo_img: "/assets/img/favicon.ico"
+profile_img: "/assets/img/profile.jpeg"
 
 # Social Links
-email: example@gmail.com
+email: ssotok12@outlook.com
 github_username: github
 twitter_username: twitter
 instagram_username: instagram

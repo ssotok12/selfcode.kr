@@ -155,7 +155,7 @@
 }
 
 .category-header {
-  font-size:2.25rem;
+  font-size:2rem;
   padding-bottom:8px;
   text-underline-offset:16px;
   margin:0 2rem 3rem 2rem; 
@@ -218,7 +218,7 @@
 
 @include mq(desktop){
 
-.category-header { font-size:3rem; }
+.category-header { font-size:2rem; }
 
 .paginated-item { height:15rem; }
 
