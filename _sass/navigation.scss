@@ -14,7 +14,7 @@
   margin:0 auto;
 
   li {
-    font-size:1rem;
+    font-size:1.1rem;
 
     > .nav-list {
       padding-left:18px;
@@ -150,15 +150,15 @@
     position:absolute;
     display:block;
     left:0;
-    border-radius:1.5rem;
-    background:rgba(gold, .375);
+    border-radius:1.3rem;
+    /* background:rgba(rgb(254, 175, 178), .375); */
     width:3rem;
     height:3rem;
-    transition:.3s;
+    transition:.1s;
   }
   &:hover:before {
     width:105%;
-    background:gold;
+    background: rgba(250, 66, 81, 0.3);
   }
 
   svg { transform:none; }
