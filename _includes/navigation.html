@@ -1,7 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation</title>
+    <style>
+        /* CSS Styles */
+        .nav-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-list-link {
+            text-decoration: none;
+            color: #000;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-list-link svg {
+            margin-right: 5px;
+        }
+
+        .nav-list-expander {
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-item-count {
+            font-size: 14px;
+            color: #fa5241;
+            white-space: nowrap;
+            margin-left: auto;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
 <nav id="navigation">
-    {% assign first_level_pages = "" | split, "" %}
-    {% assign second_level_pages = "" | split, "" %}
-    {% assign third_level_pages = "" | split, "" %}
+    {% assign first_level_pages = "" | split: "" %}
+    {% assign second_level_pages = "" | split: "" %}
+    {% assign third_level_pages = "" | split: "" %}
 
     {% for p in site.pages %}
         {%- assign p_tree = p.url | remove_first: "/" | split: "/" -%}
@@ -14,19 +63,19 @@
 
         {% if p.bookmark %}
             {% if p_level == 1 %}
-                {% assign first_level_pages = first_level_pages | push:p %}
+                {% assign first_level_pages = first_level_pages | push: p %}
             {% elsif p_level == 2 %}
-                {% assign second_level_pages = second_level_pages | push:p %}
+                {% assign second_level_pages = second_level_pages | push: p %}
             {% elsif p_level == 3 %}
-                {% assign third_level_pages = third_level_pages | push:p %}
+                {% assign third_level_pages = third_level_pages | push: p %}
             {% endif %}
         {% else %}
             {% if p_level <= 2 %}
-                {% assign first_level_pages = first_level_pages | push:p %}
+                {% assign first_level_pages = first_level_pages | push: p %}
             {% elsif p_level == 3 %}
-                {% assign second_level_pages = second_level_pages | push:p %}
+                {% assign second_level_pages = second_level_pages | push: p %}
             {% elsif p_level == 4 %}
-                {% assign third_level_pages = third_level_pages | push:p %}
+                {% assign third_level_pages = third_level_pages | push: p %}
             {% endif %}
         {% endif %}
     {% endfor %}
@@ -67,6 +116,9 @@
                         <a href="{{ child_url | prepend: site.baseurl }}" class="nav-list-link nav-sh">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M432 256c0 17.7-14.3 32-32 32L48 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z"/></svg>
                             <span>{{ child_title }}</span>
+                            {%- if num_grand_children > 0 -%}
+                                <span class="nav-item-count">({{ num_grand_children }})</span>
+                            {%- endif -%}
                         </a>
                         {%- if num_grand_children > 0 -%}
                         <button class="nav-list-expander" aria-label="toggle items in {{ child_title }} category" aria-pressed="false">
@@ -97,3 +149,5 @@
     {%- endfor -%}
     </ul>
 </nav>
+</body>
+</html>

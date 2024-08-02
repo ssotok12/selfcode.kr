@@ -1,11 +1,10 @@
 ---
-title: "Manage blog comments with Giscus"
+title: "fortinet 2번째 게시글"
 tags:
-    - user manual
-    - utility
-    - giscus
-date: "2024-02-03"
-thumbnail: "https://i.ibb.co/V9j2Qsg/giscus-Wl0-X3byd-az-U68-1.webp"
+    - Fortinet
+    - FortiGate
+date: "2024-08-02"
+thumbnail: "/assets/img/img-page/Network/Fortinet/go.jpeg"
 bookmark: true
 ---
 
