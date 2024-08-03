@@ -44,6 +44,10 @@
             margin-left: auto;
             margin-right: 10px;
         }
+
+        .nav-list ul {
+            display: none; /* Hide all sub-lists by default */
+        }
     </style>
 </head>
 <body>
@@ -121,9 +125,7 @@
                             {%- endif -%}
                         </a>
                         {%- if num_grand_children > 0 -%}
-                        <button class="nav-list-expander" aria-label="toggle items in {{ child_title }} category" aria-pressed="false">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M201.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 274.7 86.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg>
-                        </button>
+                        <!-- No expander button for level 2 -->
                         {%- endif -%}
                     </div>
                     {%- if num_grand_children > 0 -%}
@@ -149,5 +151,22 @@
     {%- endfor -%}
     </ul>
 </nav>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const expanderButtons = document.querySelectorAll('.nav-list-expander');
+
+    expanderButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const isExpanded = button.getAttribute('aria-pressed') === 'true';
+            const targetList = button.parentElement.nextElementSibling;
+
+            button.setAttribute('aria-pressed', !isExpanded);
+            if (targetList) {
+                targetList.style.display = isExpanded ? 'none' : 'block';
+            }
+        });
+    });
+});
+</script>
 </body>
 </html>
